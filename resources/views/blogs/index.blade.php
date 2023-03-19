@@ -18,7 +18,7 @@
 
                     <tr>
                         <td> {{$blog->title}}</td>
-                        <td>{{$blog->desciption}}</td>
+                        <td>{{$blog->description}}</td>
                     </tr>
 
                     @endforeach

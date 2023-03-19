@@ -25,8 +25,12 @@ Route::get('/users', [UserController::class, 'index'])->name('users');
 //manage blog
 Route::get('/blog', [BlogController::class, 'index']) ->name('blogs');
 
-Route::get('/blog.create', [BlogController::class, 'create']) ->name('blogs.create');
-    
+Route::get('/blog/create', [BlogController::class, 'create']) ->name('blogs.create');
+
+Route::post('/blog/store', [BlogController::class, 'store']) ->name('blogs.store');
+
+Route::get('/blog/edit/{id}', [BlogController::class, 'edit']) ->name('blogs.edit');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
