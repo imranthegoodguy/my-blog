@@ -29,6 +29,13 @@
                                 </button>
                             </div>
                         </div>
+
+                        <form action="{{route('blogs.delete', [$blogs->id])}}"method="post">
+                            @csrf
+                            @method ('DELETE')
+                            <button type="submit"> Delete Blog </button>
+                        </form>
+                        v>
                     
                 </div>
 

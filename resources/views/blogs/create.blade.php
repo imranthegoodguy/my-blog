@@ -1,8 +1,8 @@
 <h2>HTML Forms</h2>
 
 <form action="{{route('blogs.store')}}" method="POST">
-@csrf
-@method('post')
+  @csrf
+  @method('post')
   <label for=" title">Blog title</label><br>
   <input type="text" id="fname" name="title" value="John"><br>
   <label for="description">Description:</label><br>

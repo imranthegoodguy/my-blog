@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 
@@ -27,10 +28,13 @@ class BlogController extends Controller
 
     function store(Request $request)
     {
-        Blog::create([
-            "title" => $request->title,
-            "description" => $request->description,
+        $validator = Validator::make($request->all(), [
+            "title" => "required |string",
+            "description" => "required |string",
         ]);
+
+        Blog::create($validator->validate());
+
         return redirect()->back();
     }
 
@@ -46,7 +50,7 @@ class BlogController extends Controller
         return view('blogs.create');
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -95,8 +99,11 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
-        //
+        $blog = Blog::find($id);
+        $blog->delete();
+
+        return redirect()->route('blogs');
     }
 }

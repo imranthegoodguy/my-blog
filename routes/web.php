@@ -31,6 +31,9 @@ Route::post('/blog/store', [BlogController::class, 'store']) ->name('blogs.store
 
 Route::get('/blog/edit/{id}', [BlogController::class, 'edit']) ->name('blogs.edit');
 
+Route::delete('/blog/delete/{id}', [BlogController::class, 'destroy']) ->name('blogs.delete');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
